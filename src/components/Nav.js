@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
+import cartIcon from "../imgs/icons8-shopping-cart-32.png";
 
-function Nav() {
+function Nav(props) {
+
+    const {open} = props;
+
     return (
         <nav>
             <h3>Logo</h3>
@@ -11,9 +15,8 @@ function Nav() {
             <Link to="/shop">
                 <p>Shop</p>
             </Link>
-            <Link to="/cart">
-                <p>Shopping Cart</p>
-            </Link>
+
+            <img id="cart-icon" className="icon" onClick={open} src={cartIcon}/>
         </nav>
     );
 }

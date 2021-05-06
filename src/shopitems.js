@@ -1,31 +1,32 @@
-//use uniqid to give each item a unique id??? instead of relying on name to identify.
 import uniqid from "uniqid";
-import React from "react";
 
-const createItem = (name, price, img_path) => {
-    // console.log(img_path);
-    // console.log(require.apply(img_path).default);
+//import imgs here (require ().default doesnt okr for some reaosn)
+import longchamp from "./imgs/longchamp.PNG";
+import converse1 from "./imgs/converse3.PNG";
+import nike1 from "./imgs/nike tanjun white.PNG";
+// import mango1 from "./imgs/Mango.PNG";
+import amiya1 from "./imgs/amiya slingback heel.PNG";
+import milarno1 from "./imgs/milarno.PNG";
+import superdry1 from "./imgs/superdry.PNG";
+import milliot1 from "./imgs/milliot.PNG";
+import hush1 from "./imgs/Hush puppies.PNG";
 
-    let new_item = {
-        name: name,
-        // img: require(img_path).default,
-        price: price,
-        //id shud never change, while site is up.
-        id: uniqid()
-    }
+const createItem = (name, price, img) => {
+    const id = uniqid();
+    return {name, price, img, id};
+}
 
-
-    return new_item;
-};
-
-
-function getItems() {
-    //get item images, return path to file, name and price? (in an object), in array
-    //manually return for now
+const getItems = () => {
     let items = [
-        createItem('Converse Black Hightops', "10", "./imgs/converse3.PNG"),
-        createItem('Longchammp Blue bag', '15', "./imgs/longchamp.PNG"),
-        createItem('Nike Tanjun White', '11', './imgs/nike tanjun white.PNG')
+        // createItem("converse", 10, "./converse3.PNG"),
+        createItem("Converse Hightops", 10, converse1),
+        createItem("Longchamp Blue Tote", 15, longchamp),
+        createItem("Nike Tanjun White", 12, nike1),
+        createItem("Amiya Slingback Heel", 10, amiya1),
+        createItem("Milarno White", 14, milarno1),
+        createItem("Superdry Red", 10, superdry1),
+        createItem("Milliot Pear Clutch", 16, milliot1),
+        createItem("Hush Puppies Ivory Wristlet", 15, hush1)
     ]    
     return items;
 };

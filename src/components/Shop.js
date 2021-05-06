@@ -6,7 +6,6 @@ function Shop(props) {
 
     return(
         <div id="shop">
-            <h1>Shop</h1>
             {items.map((item) => {
                 return (
                 <div key={item.id}>
@@ -15,7 +14,7 @@ function Shop(props) {
                     <p>Price: ${item.price}</p>
 
                     <form onSubmit={e => handleSubmit(e, item.id)}>
-                        <input type="number" min="0" defaultValue ="0"/>
+                        <input type="number" min="0" max="99" defaultValue ="0"/>
                         <button type="submit">Add to cart</button>
                     </form>
                 </div>
@@ -26,10 +25,3 @@ function Shop(props) {
 }
 
 export default Shop;
-
-
-// <input type="number" min="0"/>
-
-// {/* find a way to link input value to button */}
-// <button onClick={()=>add(item.id, 3)}>Add to cart</button>
-// <p>{item.id}</p>
