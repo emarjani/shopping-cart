@@ -13,18 +13,24 @@ function App() {
 
   const [items, setItems] = useState(getItems());
   const [shoppingCart, setShoppingCart] = useState([]);
-  const [total, setTotal] = useState(0);
 
+  const [shipping, setShipping] = useState(0);
+  const [taxRate, setTaxRate] = useState(0.15);
 
-  //subtotal, shipping cost($5), taxes (5%) (round to 2 deg), total: (total is to 2 degrees)
+  const [bill, setBill] = useState({});
 
   //maybe add shipping and taxes to total? make it more realistic
   //maybe set up cart length? (no of unique shoppping cart items).
   //if this changes, animation to nav bar with number showing amnt in cart
 
+  //set up total before mount
+  useEffect(() => {
+    calculateBill();
+  }, []);
+
   //after shoppingCart is updated, update cart Total
   useEffect(()=> {
-    calculateTotal();
+    calculateBill();
   }, [shoppingCart]);
 
 
@@ -32,14 +38,23 @@ function App() {
     return (items.find(i => i.id === id));
   }
 
-  const calculateTotal = () => {
-    let total = 0;
+  //sets bill
+  const calculateBill = () => {
+    let subtotal = 0;
     shoppingCart.forEach(item => {
-      total += getCatalogItem(item.id).price * item.qty;
+      subtotal += getCatalogItem(item.id).price * item.qty;
     });
-    setTotal(total);
-  };
+    let tax = (subtotal * taxRate);
 
+    //tofixed is not exactlyyyy accurate
+    let bill = {
+      subtotal: subtotal.toFixed(2),
+      shipping: shipping.toFixed(2),
+      tax: tax.toFixed(2),
+      total: (subtotal + shipping + tax).toFixed(2)
+    }
+    setBill(bill);
+  };
 
   const addToCart = (id, qty) => {
     let cartItem = shoppingCart.find((item) => item.id === id);
@@ -71,6 +86,7 @@ function App() {
     e.target[0].value = "0";
   }
 
+  //guarantees integer if number input field is left blank
   const setNumber = (e, id) => {
     if (e.target.value === "") {
       let cartItem = shoppingCart.find(item => item.id === id);
@@ -85,6 +101,7 @@ function App() {
   const handleChange = (e, id) => {
 
     //if e.target.value === "", do nothing
+    //make sure e NAN doesnt reutnr error later
 
     let qty = parseInt(e.target.value);
 
@@ -140,7 +157,7 @@ function App() {
           cart={shoppingCart}
           clearCart = {clearCart}
           getItem={getCatalogItem}
-          total={total}
+          bill={bill}
           close={closeCart}
 
           set={setNumber}
@@ -153,3 +170,4 @@ function App() {
 }
 
 export default App;
+

@@ -1,5 +1,3 @@
-import React, {useState, useEffect} from "react";
-
 function Shop(props) {
 
     const {items, handleSubmit} = props;

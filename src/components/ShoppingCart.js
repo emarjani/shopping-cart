@@ -1,11 +1,8 @@
-//import icons
 import cancelIcon from "../imgs/icons8-cancel-50.png"
-
-import React, {useState, useEffect} from "react";
 
 function ShoppingCart(props) {
 
-    const {cart, getItem, total, close, change, clearCart, set} = props;
+    const {cart, getItem, bill, close, change, clearCart, set} = props;
 
     return (
         <div id="shopping-cart">
@@ -41,7 +38,25 @@ function ShoppingCart(props) {
 
             })}
 
-            <p id="total">Total: ${total}</p>
+            <div id="bill">
+                <div id="subtotal">
+                    <p>Subtotal</p>
+                    <p>${bill.subtotal}</p>
+                </div>
+                <div id="shipping">
+                    <p>Shipping Cost</p>
+                    <p>${bill.shipping}</p>
+                </div>
+                <div id="tax">
+                    <p>Taxes</p>
+                    <p>${bill.tax}</p>
+                </div>
+                <div id="total">
+                    <p>Total</p>
+                    <p>${bill.total}</p>
+                </div>               
+            </div>
+
             <button id="checkout">Checkout</button>
         </div>
     );
