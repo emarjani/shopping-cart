@@ -226,7 +226,7 @@ nav p {
   padding: 1em;
 }
 
-
+/* SHOP */
 
 #shop input {
   outline: none;
@@ -237,28 +237,54 @@ nav p {
 #shop {
   /* background-color: yellow; */
   /* border: 1px solid; */
+  position: relative;
+  display: grid;
+  grid-template: auto / 1fr 4fr;
+}
+
+
+#shop-filters {
+  padding-top: 4rem;
+  /* border: 1px purple solid; */
+}
+
+
+#shop-filters .tab {
+  display: flex;
+  justify-content: center;
+}
+
+#shop-filters p {
+  margin: 0.4rem;
+  font-size: 1.5rem;
+  width: 70%;
+  padding: 0.3rem;
+  transition: transform 0.1s ease-in;
+  font-family: "PT Sans Narrow";
+  color: rgb(94, 94, 94);
+}
+
+#shop-filters p:hover {
+  transform: translate(1em, 0);
+  border-left: 3px solid rgb(231, 231, 231);
+  
+}
+
+#shop-filters p:active {
+  color: rgb(156, 156, 156);
+}
+
+
+#catalog {
+  /* border: 1px solid; */
   display: grid;
   grid-template: auto / 1fr 1fr;
   gap: 2em;
   padding: 50px 2rem 50px 2rem;
 }
 
-#shop div {
-  /* border: 1px green solid; */
-}
-
-#shop p {
-  margin: 0.5 rem;
-  /* border: 1px blue solid; */
-}
-
-#shop .item-name {
-  /* font-size: 1.5rem; */
-  /* border: 1px solid pink; */
-}
 
 #shop .price {
-  /* border: 1px solid; */
   color: rgb(53, 53, 53);
 }
 

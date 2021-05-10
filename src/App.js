@@ -11,7 +11,9 @@ import ShoppingCart from './components/ShoppingCart';
 
 function App() {
 
+  //shud switch items to catalog probably. items containes all shop items, not necessarily all displayed.
   const [items, setItems] = useState(getItems());
+  const [shopItems, setShopItems] = useState([]);
   const [shoppingCart, setShoppingCart] = useState([]);
 
   const [shipping, setShipping] = useState(0);
@@ -26,6 +28,8 @@ function App() {
   //set up total before mount
   useEffect(() => {
     calculateBill();
+    //set up correct shopItem tab at first (all by default)
+    filterShop();
   }, []);
 
   //after shoppingCart is updated, update cart Total
@@ -143,6 +147,21 @@ function App() {
     document.getElementById("shopping-cart").style.padding = "0";
   }
 
+  const filterShop = (category = "all") => {
+    if (category === "all") {
+      setShopItems(items);
+    } else {
+      setShopItems(filterCatalog(category));
+    }
+  };
+
+  //depending on which filter. (all/bags/shoes) (default all i guess)
+  //or maybe call it filter catalog
+  //by default, items state will be passed
+  const filterCatalog = (category) => {
+    return items.filter((item) => item.category === category.toLowerCase());
+  }
+
   return (
     <Router>
       <div className="App">
@@ -152,7 +171,7 @@ function App() {
             <Route exact path="/" component={Home}/>
             <Route exact path="/shop"
             render={(props) => (
-              <Shop {...props} items={items} handleSubmit={handleSubmit}/>
+              <Shop {...props} items={shopItems} tab={filterShop} handleSubmit={handleSubmit}/>
             )}
             />
           </Switch>

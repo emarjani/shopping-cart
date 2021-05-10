@@ -13,25 +13,26 @@ import kingship1 from "./imgs/kingship.PNG";
 import head1 from "./imgs/head over heels1.PNG"
 import therapy1 from "./imgs/therapy.PNG";
 
-const createItem = (name, raw_price, img) => {
+//add category (bags, shoes), so you can filter items (lukily can only belong to one category at a time)
+const createItem = (name, raw_price, category, img) => {
     const id = uniqid();
     const price = raw_price.toFixed(2);
-    return {name, price, img, id};
+    return {name, price, category, img, id};
 }
 
 const getItems = () => {
     let items = [
-        createItem("Converse Hightops", 14.50, converse1),
-        createItem("Longchamp Blue Tote", 35, longchamp),
-        createItem("Nike Tanjun White", 17, nike1),
-        createItem("Amiya Slingback Heel", 10, amiya1),
-        createItem("Milarno White", 14.99, milarno1),
-        createItem("Superdry Red", 15, superdry1),
-        createItem("Milliot Pear Clutch", 26, milliot1),
-        createItem("Hush Puppies Ivory Wristlet", 25, hush1),
-        createItem("Therapy Beach Sandals", 10.70, therapy1),
-        createItem("Kingship Navy Pouch", 14, kingship1),
-        createItem("Head Over Heels Black Stiletto", 19.50, head1)
+        createItem("Converse Hightops", 14.50, "shoes", converse1),
+        createItem("Longchamp Blue Tote", 35, "bags", longchamp),
+        createItem("Nike Tanjun White", 17, "shoes", nike1),
+        createItem("Amiya Slingback Heel", 10, "shoes", amiya1),
+        createItem("Milarno White", 14.99, "shoes", milarno1),
+        createItem("Superdry Red", 15, "bags", superdry1),
+        createItem("Milliot Pear Clutch", 26,"bags", milliot1),
+        createItem("Hush Puppies Ivory Wristlet", 25, "bags", hush1),
+        createItem("Therapy Beach Sandals", 10.70, "shoes", therapy1),
+        createItem("Kingship Navy Pouch", 14, "bags", kingship1),
+        createItem("Head Over Heels Black Stiletto", 19.50, "shoes", head1)
     ]    
     return items;
 };
