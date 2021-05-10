@@ -1,8 +1,10 @@
-import cancelIcon from "../imgs/icons8-cancel-50.png"
+import cancelIcon2 from "../imgs/icons8-cancel-50.png"
+import cancelIcon from "../imgs/icons8-macos-close-64.png";
+import removeIcon from "../imgs/icons8-minus-64.png";
 
 function ShoppingCart(props) {
 
-    const {cart, getItem, bill, close, change, clearCart, set} = props;
+    const {cart, getItem, bill, close, change, clearCart, set, remove} = props;
 
     return (
         <div id="shopping-cart">
@@ -17,9 +19,13 @@ function ShoppingCart(props) {
                 return (
                     <div className="checkout-item" key={item.id}>
                         <img src={catalogItem.img}/>
+                        
 
                         <div className="item-info">
-                            <p>{catalogItem.name}</p>
+                            <div>
+                                <p>{catalogItem.name}</p>
+                                <img className="remove-icon" onClick={() => remove(item.id)} src={removeIcon}/>   
+                            </div>
 
                             <div>
                                 <input

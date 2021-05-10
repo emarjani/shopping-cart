@@ -123,6 +123,11 @@ function App() {
     
   };
 
+  //handle change has same function.
+  const removeItem = (id) => {
+    setShoppingCart(shoppingCart.filter(item => item.id !== id));
+  }
+
   const clearCart = () => {
     setShoppingCart([]);
   }
@@ -130,7 +135,7 @@ function App() {
   //functions to toggle collapsable shop sidebar
   const openCart = () => {
     document.getElementById("shopping-cart").style.width = "35%";
-    document.getElementById("shopping-cart").style.padding = "2rem";
+    document.getElementById("shopping-cart").style.padding = "2em";
   }
 
   const closeCart = () => {
@@ -153,13 +158,15 @@ function App() {
           </Switch>
 
           <ShoppingCart  
-          change = {handleChange}
           cart={shoppingCart}
-          clearCart = {clearCart}
-          getItem={getCatalogItem}
           bill={bill}
+          
+          getItem={getCatalogItem}
+          change = {handleChange}
           close={closeCart}
-
+            
+          remove= {removeItem}
+          clearCart = {clearCart}
           set={setNumber}
           />
         </div>

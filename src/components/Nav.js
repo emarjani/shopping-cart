@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
-import cartIcon from "../imgs/icons8-shopping-cart-32.png";
+// import cartIcon from "../imgs/icons8-shopping-cart-32.png";
+import cartIcon from "../imgs/shopping-cart-48.png";
 
 function Nav(props) {
 
@@ -7,7 +8,6 @@ function Nav(props) {
 
     return (
         <nav>
-            <h3>Logo</h3>
             <Link to = "/">
                 <p>Home</p>
             </Link>

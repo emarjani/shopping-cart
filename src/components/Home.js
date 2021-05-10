@@ -1,7 +1,17 @@
+import background from "../imgs/background.jpg";
 
 function Home() {
     return (
-        <h1>Homepage</h1>
+        <div id="homepage">
+            <div>
+                <h1>Galora.</h1>
+                <p>SHOP NOW</p>
+
+            </div>
+            
+            <img src={background}/>
+            
+        </div>
     )
 }
 

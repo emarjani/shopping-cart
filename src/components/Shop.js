@@ -8,8 +8,8 @@ function Shop(props) {
                 return (
                 <div key={item.id}>
                     <img src={item.img}/>
-                    <p>{item.name}</p>
-                    <p>Price: ${item.price}</p>
+                    <p className="item-name">{item.name}</p>
+                    <p className="price">${item.price}</p>
 
                     <form onSubmit={e => handleSubmit(e, item.id)}>
                         <input type="number" min="0" max="99" defaultValue ="0"/>
