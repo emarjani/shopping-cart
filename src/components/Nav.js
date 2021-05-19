@@ -1,5 +1,4 @@
 import {Link} from "react-router-dom";
-// import cartIcon from "../imgs/icons8-shopping-cart-32.png";
 import cartIcon from "../imgs/shopping-cart-48.png";
 
 function Nav(props) {
@@ -15,7 +14,9 @@ function Nav(props) {
                 <p>Shop</p>
             </Link>
 
-            <img id="cart-icon" className="icon" onClick={open} src={cartIcon}/>
+            <div id="cart-nav">
+                <img id="cart-icon" className="icon" onClick={open} src={cartIcon}/>   
+            </div>
         </nav>
     );
 }

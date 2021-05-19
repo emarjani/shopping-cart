@@ -11,18 +11,15 @@ import ShoppingCart from './components/ShoppingCart';
 
 function App() {
 
-  //shud switch items to catalog probably. items containes all shop items, not necessarily all displayed.
   const [items, setItems] = useState(getItems());
   const [shopItems, setShopItems] = useState([]);
   const [shoppingCart, setShoppingCart] = useState([]);
 
   const [shipping, setShipping] = useState(0);
   const [taxRate, setTaxRate] = useState(0.15);
-
   const [bill, setBill] = useState({});
 
-  //maybe add shipping and taxes to total? make it more realistic
-  //maybe set up cart length? (no of unique shoppping cart items).
+  //set up cart length? (no of unique shoppping cart items).
   //if this changes, animation to nav bar with number showing amnt in cart
 
   //set up total before mount
@@ -50,7 +47,6 @@ function App() {
     });
     let tax = (subtotal * taxRate);
 
-    //tofixed is not exactlyyyy accurate
     let bill = {
       subtotal: subtotal.toFixed(2),
       shipping: shipping.toFixed(2),
@@ -80,7 +76,7 @@ function App() {
 
   //e.target[0] is grabbing the input tag. (make sure that if input isnt first node, wont break)
 
-  //handle submit for shop page (addto cart)
+  //handle submit for shop page (add to cart)
   const handleSubmit = (e, id) => {
     e.preventDefault();
 
@@ -104,15 +100,9 @@ function App() {
 
   const handleChange = (e, id) => {
 
-    //if e.target.value === "", do nothing
-    //make sure e NAN doesnt reutnr error later
-
     let qty = parseInt(e.target.value);
 
-    //if qty is 0, need to remove from cart. or set minimum to 1. and have a cancel button
     if (qty === 0) {
-      //create a popup asking ARE U sure you want to remove item from cart?
-
       setShoppingCart(shoppingCart.filter(item => item.id !== id));
     } else {
       let cartItem = shoppingCart.find(item => item.id === id);
@@ -123,11 +113,8 @@ function App() {
 
       setShoppingCart(temp);
     }
-
-    
   };
 
-  //handle change has same function.
   const removeItem = (id) => {
     setShoppingCart(shoppingCart.filter(item => item.id !== id));
   }
@@ -138,7 +125,8 @@ function App() {
 
   //functions to toggle collapsable shop sidebar
   const openCart = () => {
-    document.getElementById("shopping-cart").style.width = "35%";
+    document.getElementById("shopping-cart").style.width = "40rem";
+    document.getElementById("shopping-cart").style.maxWidth = "80%";
     document.getElementById("shopping-cart").style.padding = "2em";
   }
 
@@ -155,9 +143,6 @@ function App() {
     }
   };
 
-  //depending on which filter. (all/bags/shoes) (default all i guess)
-  //or maybe call it filter catalog
-  //by default, items state will be passed
   const filterCatalog = (category) => {
     return items.filter((item) => item.category === category.toLowerCase());
   }
