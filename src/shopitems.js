@@ -13,7 +13,7 @@ import kingship1 from "./imgs/kingship.PNG";
 import head1 from "./imgs/head over heels1.PNG"
 import therapy1 from "./imgs/therapy.PNG";
 
-//add category (bags, shoes), so you can filter items (lukily can only belong to one category at a time)
+//add category (bags, shoes), so you can filter items
 const createItem = (name, raw_price, category, img) => {
     const id = uniqid();
     const price = raw_price.toFixed(2);
