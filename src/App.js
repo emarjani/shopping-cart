@@ -1,7 +1,10 @@
 import './App.css';
 import React, {useState, useEffect} from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-//all routing will be done thru App
+import ReactNotification from 'react-notifications-component'
+import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css/animate.min.css';
 
 import getItems from "./shopitems.js"
 import Shop from "./components/Shop";
@@ -56,8 +59,28 @@ function App() {
     setBill(bill);
   };
 
-  const addToCart = (id, qty) => {
+
+  const cartNotification = (name) => {
+    store.addNotification({
+      message: `Added "${name}" to cart`,
+      type: "success",
+      insert: "top",
+      container: "bottom-center",
+      animationIn: ["animate__animated", "animate__flipInX"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 2000,
+      }
+    });
+  };
+ 
+  const addToCart = (id, qty, name) => {
     let cartItem = shoppingCart.find((item) => item.id === id);
+
+    //if any thing is added to cart (update or new item), trigger notif. 
+    if (qty > 0) {
+      cartNotification(name);
+    }
 
     if (cartItem) {
       let newQty = cartItem.qty + qty;
@@ -77,11 +100,11 @@ function App() {
   //e.target[0] is grabbing the input tag. (make sure that if input isnt first node, wont break)
 
   //handle submit for shop page (add to cart)
-  const handleSubmit = (e, id) => {
+  const handleSubmit = (e, id, name) => {
     e.preventDefault();
 
     let qty = parseInt(e.target[0].value);
-    addToCart(id, qty);
+    addToCart(id, qty, name);
     //reset input field back to 0
     e.target[0].value = "0";
   }
@@ -150,6 +173,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <ReactNotification />
         <Nav open={openCart} cartIsEmpty={shoppingCart.length == 0}/>
         <div id="page-content">
           <Switch>

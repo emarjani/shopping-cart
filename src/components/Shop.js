@@ -24,7 +24,7 @@ function Shop(props) {
                         <p className="item-name">{item.name}</p>
                         <p className="price">${item.price}</p>
 
-                        <form onSubmit={e => handleSubmit(e, item.id)}>
+                        <form onSubmit={e => handleSubmit(e, item.id, item.name)}>
                             <input type="number" min="0" max="99" defaultValue ="0"/>
                             <button type="submit">Add to cart</button>
                         </form>
