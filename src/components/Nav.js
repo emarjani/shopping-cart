@@ -3,7 +3,11 @@ import cartIcon from "../imgs/shopping-cart-48.png";
 
 function Nav(props) {
 
-    const {open} = props;
+    const {open, cartIsEmpty} = props;
+
+    
+
+
 
     return (
         <nav>
@@ -15,6 +19,9 @@ function Nav(props) {
             </Link>
 
             <div id="cart-nav">
+                {!cartIsEmpty && 
+                <div className="circle-icon"></div>
+                }
                 <img id="cart-icon" className="icon" onClick={open} src={cartIcon}/>   
             </div>
         </nav>

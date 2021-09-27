@@ -150,7 +150,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Nav open={openCart}/>
+        <Nav open={openCart} cartIsEmpty={shoppingCart.length == 0}/>
         <div id="page-content">
           <Switch>
             <Route exact path="/" component={Home}/>

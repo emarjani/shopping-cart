@@ -23,6 +23,31 @@ nav p {
   text-decoration: none;
 }
 
+#cart-nav {
+  height: 45px;
+  width: 45px;
+  position: relative;
+}
+
+#cart-nav .circle-icon {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  height: 7px;
+  width: 7px;
+  background-color: rgb(106, 250, 106);
+  border-radius: 50%;
+  box-shadow:  0 0 5px #ffffff;
+}
+
+
+#cart-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* ICONS */
 
 .icon {
